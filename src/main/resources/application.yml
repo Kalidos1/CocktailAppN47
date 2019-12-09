@@ -15,4 +15,4 @@ info:
 
 server:
   servlet:
-    context-path: /cocktails
+    context-path: /cocktails-app
