@@ -3,6 +3,7 @@ package com.hackdays.cocktailapp.north47;
 
 import com.hackdays.cocktailapp.north47.domain.AddToFavouriteCriteria;
 import com.hackdays.cocktailapp.north47.domain.DrinkDTO;
+import com.hackdays.cocktailapp.north47.domain.OrderCriteria;
 import com.hackdays.cocktailapp.north47.domain.User;
 import com.hackdays.cocktailapp.north47.service.CocktailService;
 
@@ -45,7 +46,7 @@ public class CocktailsController {
 
     @PostMapping("/{userId}/order")
     public User createNewOrder(@PathVariable("userId") String userId,
-                               @RequestBody @Valid AddToFavouriteCriteria criteria) {
+                               @RequestBody @Valid OrderCriteria criteria) {
         return cocktailService.createNewOrder(userId, criteria);
     }
 }

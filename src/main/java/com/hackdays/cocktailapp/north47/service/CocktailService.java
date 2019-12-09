@@ -7,6 +7,7 @@ import com.hackdays.cocktailapp.north47.domain.DrinkDTO;
 import com.hackdays.cocktailapp.north47.domain.DrinkDetailsDTO;
 import com.hackdays.cocktailapp.north47.domain.Favourite;
 import com.hackdays.cocktailapp.north47.domain.Order;
+import com.hackdays.cocktailapp.north47.domain.OrderCriteria;
 import com.hackdays.cocktailapp.north47.domain.User;
 import com.hackdays.cocktailapp.north47.repo.DrinkRepository;
 import com.hackdays.cocktailapp.north47.repo.FavouriteRepository;
@@ -89,15 +90,14 @@ public class CocktailService {
     }
 
 
-    public User createNewOrder(String partnerId, AddToFavouriteCriteria criteria) {
+    public User createNewOrder(String partnerId, OrderCriteria criteria) {
         Optional<User> userOptional = userRepository.findById(partnerId);
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             Order order = new Order();
-            //   order.getDrinks().addAll(criteria.getFavourites());
+            order.getDrinks().addAll(criteria.getDrinks());
             user.getOrders().add(order);
             return userRepository.save(user);
-
         }
         return null;
     }

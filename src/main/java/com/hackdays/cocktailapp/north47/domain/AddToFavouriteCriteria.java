@@ -1,15 +1,16 @@
 package com.hackdays.cocktailapp.north47.domain;
 
 
+import javax.validation.constraints.NotNull;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 @Data
 @NoArgsConstructor
 public class AddToFavouriteCriteria {
-    @NonNull
+    @NotNull
     private String drinkId;
-    @NonNull
+    @NotNull
     private String barId;
 }
