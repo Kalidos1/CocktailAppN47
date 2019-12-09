@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    platform: h2
+    url: jdbc:h2:~/profile-test;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE;MODE=Oracle
+    username: sanitas
+    password:
+
+  h2:
+    console:
+      enabled: true
+      path: /h2console
+
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true

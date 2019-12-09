@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: Cocktails
+  jmx:
+    enabled: false
+
+info:
+  app:
+    name: ${spring.application.name}
+
+  build:
+    artifact: @project.artifactId@
+    name: @project.name@
+    version: @project.version@
+
+server:
+  servlet:
+    context-path: /cocktails
