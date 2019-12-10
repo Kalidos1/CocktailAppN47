@@ -4,11 +4,13 @@ import com.hackdays.cocktailapp.north47.domain.AddToFavouriteCriteria;
 import com.hackdays.cocktailapp.north47.domain.Bar;
 import com.hackdays.cocktailapp.north47.domain.Drink;
 import com.hackdays.cocktailapp.north47.domain.DrinkDTO;
+import com.hackdays.cocktailapp.north47.domain.DrinkDetails;
 import com.hackdays.cocktailapp.north47.domain.DrinkDetailsDTO;
 import com.hackdays.cocktailapp.north47.domain.Favourite;
 import com.hackdays.cocktailapp.north47.domain.Order;
 import com.hackdays.cocktailapp.north47.domain.OrderCriteria;
 import com.hackdays.cocktailapp.north47.domain.User;
+import com.hackdays.cocktailapp.north47.repo.DrinkDetailsRepository;
 import com.hackdays.cocktailapp.north47.repo.DrinkRepository;
 import com.hackdays.cocktailapp.north47.repo.FavouriteRepository;
 import com.hackdays.cocktailapp.north47.repo.OrderRepository;
@@ -39,6 +41,9 @@ public class CocktailService {
 
     @Autowired
     private FavouriteRepository favouriteRepository;
+
+    @Autowired
+    private DrinkDetailsRepository drinkDetailsRepository;
 
 
     public List<DrinkDTO> getListOfDrinks(String partnerId) {
@@ -100,5 +105,9 @@ public class CocktailService {
             return userRepository.save(user);
         }
         return null;
+    }
+
+    public Optional<DrinkDetails> getDrinkDetails(String drinkId) {
+        return drinkDetailsRepository.findById(drinkId);
     }
 }

@@ -3,6 +3,7 @@ package com.hackdays.cocktailapp.north47;
 
 import com.hackdays.cocktailapp.north47.domain.AddToFavouriteCriteria;
 import com.hackdays.cocktailapp.north47.domain.DrinkDTO;
+import com.hackdays.cocktailapp.north47.domain.DrinkDetails;
 import com.hackdays.cocktailapp.north47.domain.OrderCriteria;
 import com.hackdays.cocktailapp.north47.domain.User;
 import com.hackdays.cocktailapp.north47.service.CocktailService;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -49,4 +51,12 @@ public class CocktailsController {
                                @RequestBody @Valid OrderCriteria criteria) {
         return cocktailService.createNewOrder(userId, criteria);
     }
+
+    @GetMapping("/{drinkId}/details")
+    public DrinkDetails getDrinkDetails(@PathVariable("drinkId") String drinkId) throws Exception {
+        Optional<DrinkDetails> drinkDetails = cocktailService.getDrinkDetails(drinkId);
+        return drinkDetails.orElseThrow(Exception::new);
+    }
+
+
 }
